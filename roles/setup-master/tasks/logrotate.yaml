@@ -16,11 +16,11 @@ spec:
       value: -v
     volumeMounts:
     - name: varlog
-    mountPath: /var/log/containers
+      mountPath: /var/log/containers
     - name: varlibdockercontainers
-    mountPath: /var/lib/docker/containers
+      mountPath: /var/lib/docker/containers
     - name: varlog1
-    mountPath: /var/log/kubernetes
+      mountPath: /var/log/kubernetes
     - name: varlibkubernetes
-    mountPath: /var/lib/etcd
+      mountPath: /var/lib/etcd
      
