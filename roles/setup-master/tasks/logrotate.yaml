@@ -10,7 +10,7 @@ spec:
   containers:
   - name: logrotate
     image: mumoshu/kube-logrotate:0.1.0
-        
+  
     env:
     - name: LOGROTATE_ARGS
       value: -v
