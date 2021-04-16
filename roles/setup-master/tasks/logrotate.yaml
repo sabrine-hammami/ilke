@@ -11,28 +11,28 @@ spec:
   - name: logrotate
     image: mumoshu/kube-logrotate:0.1.0
         
-  env:
-  - name: LOGROTATE_ARGS
+    env:
+    - name: LOGROTATE_ARGS
     value: -v
 
-  volumeMounts:
-  - name: varlog
-    mountPath: /var/log/containers
-  - name: varlog1
-    mountPath: /var/log/kubernetes
+    volumeMounts:
+    - name: varlog
+      mountPath: /var/log/containers
+    - name: varlog1
+      mountPath: /var/log/kubernetes
 
-volumes:
-- name: varlog
-  hostPath: 
-    path: /var/log/containers
-    type: Directory
-- name: varlog1
-  hostPath: 
-    path: /var/log/kubernetes
-    type: Directory
-- name: logrotate-conf
-  configMap:
-    name: logrotate-config
+  volumes:
+  - name: varlog
+    hostPath: 
+      path: /var/log/containers
+      type: Directory
+  - name: varlog1
+    hostPath: 
+      path: /var/log/kubernetes
+      type: Directory
+  - name: logrotate-conf
+    configMap:
+      name: logrotate-config
 
    
      
