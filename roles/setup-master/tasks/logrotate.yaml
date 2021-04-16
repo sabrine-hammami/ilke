@@ -14,13 +14,10 @@ spec:
     env:
     - name: LOGROTATE_ARGS
       value: -v
-    volumeMounts:
-    - name: varlog
-      mountPath: /var/log/containers
-    - name: varlibdockercontainers
-      mountPath: /var/lib/docker/containers
-    - name: varlog1
-      mountPath: /var/log/kubernetes
-    - name: varlibkubernetes
-      mountPath: /var/lib/etcd
+   # volumeMounts:
+   # - name: varlog
+    #  mountPath: /var/log/containers
+    #- name: varlog1
+     # mountPath: /var/log/kubernetes
+   
      
