@@ -14,10 +14,22 @@ spec:
     env:
     - name: LOGROTATE_ARGS
       value: -v
-   # volumeMounts:
-   # - name: varlog
-    #  mountPath: /var/log/containers
-    #- name: varlog1
-     # mountPath: /var/log/kubernetes
+
+    volumeMounts:
+    - name: varlog
+      mountPath: /var/log/containers
+    - name: varlog1
+      mountPath: /var/log/kubernetes
+
+  volumes:
+  - name: varlog
+    hostPath: 
+      path: /var/log/containers
+  - name: varlog1
+    hostPath: 
+      path: /var/log/kubernetes
+    configMap:
+      name: logrotate-config
+
    
      
