@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logrotate-config
+data:
+  my_logs.conf: |
+    /var/log/app/*.log {
+        daily
+        missingok
+        rotate 7
+        compress
+        delaycompress
+        dateformat -%Y%m%d_%H%M%S
+        notifempty
+        copytruncate
+        su
+    }
+  my_txt_logs.conf: |
+    /var/log/app/*.txt {
+        daily
+        missingok
+        rotate 3
+        compress
+        delaycompress
+        dateformat -%Y%m%d_%H%M%S
+        notifempty
+        copytruncate
+        su
+    }
