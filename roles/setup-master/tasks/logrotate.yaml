@@ -13,7 +13,7 @@ spec:
         
     env:
     - name: LOGROTATE_ARGS
-    value: -v
+      value: -v
 
     volumeMounts:
     - name: varlog
