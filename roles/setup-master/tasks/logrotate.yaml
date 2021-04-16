@@ -17,9 +17,9 @@ spec:
 
   volumeMounts:
   - name: varlog
-  mountPath: /var/log/containers
+    mountPath: /var/log/containers
   - name: varlog1
-  mountPath: /var/log/kubernetes
+    mountPath: /var/log/kubernetes
 
 volumes:
 - name: varlog
