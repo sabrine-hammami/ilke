@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: logrotate
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      labels:
+        k8s-ilke: logrotate
+    spec:
+      dnsPolicy: Default
+      containers:
+      - name: logrotate
+        image: mumoshu/kube-logrotate:0.1.0
+        
+        env:
+        - name: LOGROTATE_ARGS
+          value: -v
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log/containers
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+        - name: varlog1
+          mountPath: /var/log/kubernetes
+        - name: varlibkubernetes
+          mountPath: /var/lib/etcd
+     
