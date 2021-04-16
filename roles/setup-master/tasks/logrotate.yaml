@@ -8,8 +8,9 @@ metadata:
 spec:
   dnsPolicy: Default
   containers:
-  - name: logrotate
-    image: mumoshu/kube-logrotate:0.1.0
+  - image: mumoshu/kube-logrotate:0.1.0
+    name: logrotate
+    
     
     env:
     - name: LOGROTATE_ARGS
