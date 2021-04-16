@@ -20,7 +20,7 @@ spec:
       mountPath: /var/log/containers
     - name: varlog1
       mountPath: /var/log/kubernetes
-
+  terminationGracePeriodSeconds: 30
   volumes:
   - name: varlog
     hostPath: 
