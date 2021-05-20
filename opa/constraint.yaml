@@ -1,11 +1,10 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sDenyPath
+kind: K8sUniqueIngressHost 
 metadata:
-name: psp-host-network-ports
+name: unique-ingress-host
 spec:
+enforcementAction: dryrun
 match:
 kinds:
-- apiGroups: [""]
-kinds: ["Pod"]
-parameters:
-paths: ["/tmp", "/etc", "/usr"]
+- apiGroups: ["extensions", "networking.k8s.io"]
+kinds: ["Ingress"]
