@@ -1,0 +1,30 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+name: k8suniqueingresshost
+spec:
+crd:
+spec:
+names:
+kind: K8sUniqueIngressHost
+targets:
+- target: admission.k8s.gatekeeper.sh
+rego: |
+package k8suniqueingresshost
+identical(obj, review) {
+obj.metadata.namespace == review.object.metadata.namespace
+
+}
+violation[{"msg": msg}] {
+input.review.object.kind == "Pod"
+ #allowedpaths := input.parameters.paths
+        hostpath := input.review.object.spec.volumes[_].hostPath.path
+        value := input.review.object.metadata.namespace
+        value == "test-opa"
+        #msg := sprintf("Namespace should not be test-opa: %v", [value])
+        not contains(value,hostpath)
+        msg := sprintf("%v not in allowed paths,[hostpath])
+        }
+        #contains(allowedpaths,hostpaths) {
+        #hostpath == allowedpaths[_]
+        }
