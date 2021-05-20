@@ -1,10 +1,11 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sUniqueIngressHost 
+kind: K8sRequiredLabels
 metadata:
-name: unique-ingress-host
+  name: ns-must-have-hr
 spec:
-enforcementAction: dryrun
-match:
-kinds:
-- apiGroups: ["extensions", "networking.k8s.io"]
-kinds: ["Ingress"]
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Namespace"]
+  parameters:
+    labels: ["hr"]
